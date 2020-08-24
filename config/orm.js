@@ -1,38 +1,26 @@
-var connection = require("./connection.js");
+const connection = require("./connection.js");
 
-// Object Relational Mapper (ORM)
-
-// The ?? signs are for swapping out table or column names
-// The ? signs are for swapping out other values
-
-var orm = {
-  selectWhere: function(tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
-      if (err) throw err;
-      console.log(result);
+const orm = {
+  select: function(cb) {
+    const query = "SELECT * FROM burgers";
+    connection.query(query, function(err, res) {
+      if(err) throw err;
+      cb(res);
     });
   },
-  selectAndOrder: function(whatToSelect, table, orderCol) {
-    var queryString = "SELECT ?? FROM ?? ORDER BY ?? DESC";
-    console.log(queryString);
-    connection.query(queryString, [whatToSelect, table, orderCol], function(err, result) {
-      if (err) throw err;
-      console.log(result);
+  create: function(value,cb) {
+    const query = "INSERT INTO burgers (burger_name) VALUES (?)";
+    connection.query(query, [value], function(err) {
+      if(err) throw err;
+      cb(res);
     });
   },
-  findWhoHasMost: function(tableOneCol, tableTwoForeignKey, tableOne, tableTwo) {
-    var queryString =
-      "SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1";
-
-    connection.query(
-      queryString,
-      [tableOneCol, tableOneCol, tableOne, tableTwo, tableTwo, tableTwoForeignKey, tableOne, tableOneCol],
-      function(err, result) {
-        if (err) throw err;
-        console.log(result);
-      }
-    );
+  update: function(condition,cb) {
+    const query = "UPDATE burgers SET devoured = true WHERE id = '*'";
+    connection.query(query, [condition], function(err) {
+      if(err) throw err;
+      cb(res);
+    });
   }
 };
 
