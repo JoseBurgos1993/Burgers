@@ -10,14 +10,14 @@ const orm = {
   },
   create: function(value,cb) {
     const query = "INSERT INTO burgers (burger_name) VALUES (?)";
-    connection.query(query, [value], function(err) {
+    connection.query(query, [value], function(err, res) {
       if(err) throw err;
       cb(res);
     });
   },
   update: function(condition,cb) {
-    const query = "UPDATE burgers SET devoured = true WHERE id = '*'";
-    connection.query(query, [condition], function(err) {
+    const query = "UPDATE burgers SET devoured = true WHERE id = ?";
+    connection.query(query, [condition], function(err, res) {
       if(err) throw err;
       cb(res);
     });
