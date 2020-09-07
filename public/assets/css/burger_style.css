@@ -1,7 +1,9 @@
 li {
     padding: 5px;
     margin: 5px;
-    background: #faebd7;
+    background: black;
+    color: whitesmoke;
+    text-align: center;
   }
   
   .label {
