@@ -23,5 +23,5 @@ Copyright (c) 2020 Jose David Burgos
 
 ## Questions
 Find me on [my github](https://github.com/JoseBurgos1993/).
-Checkout my [portfolio]().
+Checkout my [portfolio](https://joseburgos1993.github.io/JoseBurgos_Portfolio/).
 Send an email to jose.burgos.me@gmail.com.
